@@ -43,13 +43,16 @@ We only provide an example to test the model on the test set. You may need to mo
 
 # Performance on the validation set
 
+The overall results on val set:
 
-|   Method   |       Overall: MAE/MSE/NAE       | 
-|------------|----------------------------------|
-| MCNN       |102.2/238.3,     140.3/285.7,   176.1/373.9|
-| C3F-VGG    |  36.6/88.9,      57.6/133.9,    91.4/222.0|
-| CSRNet     |  32.6/74.3,      54.6/135.2,    87.3/217.2|
-| SFCN+      |  **26.8/66.1**,  56.5/139.0,    83.5/211.5|
+|   Method   |  MAE  |  MSE  |  PSNR  |  SSIM  | 
+|------------|-------|-------|--------|--------|
+| MCNN       | 218.53| 700.61| 28.558 |  0.875 |
+| C3F-VGG    | 105.79| 504.39| 29.977 |  0.918 |
+| CSRNet     | 104.89| 433.48| 29.901 |  0.883 |
+| CANNet     |  93.58| 489.90| 30.428 |  0.870 |
+| SCAR       |  **81.57**| **397.92**| 30.356 |  0.920 |
+| SFCN+      |  95.46| 608.32| **30.591** | **0.952**|
 
 
  About the leaderboard on the test set, please visit [Crowd benchmark](https://www.crowdbenchmark.com/crowdresult.html).  
