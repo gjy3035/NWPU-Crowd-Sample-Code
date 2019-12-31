@@ -100,9 +100,7 @@ class Trainer():
                 print( '        [cnt: gt: %.1f pred: %.2f]' % (gt_map[0].sum().data/self.cfg_data.LOG_PARA, pred_map[0].sum().data/self.cfg_data.LOG_PARA) )           
 
 
-
-
-    def validate(self):# validate_V3 for GCC
+    def validate(self):
 
         self.net.eval()
         
@@ -114,9 +112,6 @@ class Trainer():
         c_maes = {'level':AverageCategoryMeter(5), 'illum':AverageCategoryMeter(4)}
         c_mses = {'level':AverageCategoryMeter(5), 'illum':AverageCategoryMeter(4)}
         c_naes = {'level':AverageCategoryMeter(5), 'illum':AverageCategoryMeter(4)}
-
-        # pdb.set_trace()
-
 
         for vi, data in enumerate(self.val_loader, 0):
             img, dot_map, attributes_pt = data
@@ -170,21 +165,9 @@ class Trainer():
                 pred_map = pred_map / mask
                 den_map = den_map / mask
 
-            # compute pred_cnt with the original code
-
-
-            # with torch.no_grad():
-            #     img = Variable(img).cuda()
-            #     dot_map = Variable(dot_map).cuda()
-
-
-            #     pred_map, den_map = self.net.forward(img,dot_map)
-
                 pred_map = pred_map.data.cpu().numpy()
                 dot_map = dot_map.data.cpu().numpy()
                 den_map = den_map.data.cpu().numpy()
-
-
                 
                 pred_cnt = np.sum(pred_map)/self.cfg_data.LOG_PARA
                 gt_count = np.sum(dot_map)/self.cfg_data.LOG_PARA
@@ -192,14 +175,12 @@ class Trainer():
                 s_mae = abs(gt_count-pred_cnt)
                 s_mse = (gt_count-pred_cnt)*(gt_count-pred_cnt)
 
-
                 losses.update(self.net.loss.item())
                 maes.update(s_mae)
                 mses.update(s_mse)
                    
                 attributes_pt = attributes_pt.squeeze() 
 
-                # pdb.set_trace()
                 c_maes['level'].update(s_mae,attributes_pt[1])
                 c_mses['level'].update(s_mse,attributes_pt[1])
                 c_maes['illum'].update(s_mae,attributes_pt[0])
@@ -211,8 +192,6 @@ class Trainer():
                     c_naes['level'].update(s_nae,attributes_pt[1])
                     c_naes['illum'].update(s_nae,attributes_pt[0])
 
-
-
                 if vi==0:
                     vis_results(self.exp_name, self.epoch, self.writer, self.restore_transform, img, pred_map, den_map)
             
@@ -221,7 +200,6 @@ class Trainer():
         overall_mse = np.sqrt(mses.avg)
         overall_nae = naes.avg
 
-
         self.writer.add_scalar('val_loss', loss, self.epoch + 1)
         self.writer.add_scalar('overall_mae', overall_mae, self.epoch + 1)
         self.writer.add_scalar('overall_mse', overall_mse, self.epoch + 1)
@@ -229,6 +207,5 @@ class Trainer():
 
         self.train_record = update_model(self.net,self.optimizer,self.scheduler,self.epoch,self.i_tb,self.exp_path,self.exp_name, \
             [overall_mae, overall_mse, overall_nae, loss],self.train_record,self.log_txt)
-
 
         print_NWPU_summary(self.exp_name, self.log_txt,self.epoch,[overall_mae, overall_mse, overall_nae, loss],self.train_record,c_maes,c_mses, c_naes)

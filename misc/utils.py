@@ -1,22 +1,16 @@
-import numpy as np
 import os
 import math
+import numpy as np
 import time
 import random
 import shutil
-
-import torch
-from torch import nn
-
 import cv2
 from PIL import Image
 
-
+import torch
+from torch import nn
 import torchvision.utils as vutils
 import torchvision.transforms as standard_transforms
-
-import pdb
-
 
 def initialize_weights(models):
     for model in models:
@@ -82,28 +76,6 @@ def logger(exp_path, exp_name, work_dir, exception, resume=False):
     return writer, log_file
 
 
-
-def logger_for_CMTL(exp_path, exp_name, work_dir, exception, resume=False):
-    
-    if not os.path.exists(exp_path):
-        os.mkdir(exp_path)
-
-    if not os.path.exists(exp_path+ '/' + exp_name):
-        os.mkdir(exp_path+ '/' + exp_name)
-    log_file = exp_path + '/' + exp_name + '/' + exp_name + '.txt'
-    
-    cfg_file = open('./config.py',"r")  
-    cfg_lines = cfg_file.readlines()
-    
-    with open(log_file, 'a') as f:
-        f.write(''.join(cfg_lines) + '\n\n\n\n')
-
-    if not resume:
-        copy_cur_env(work_dir, exp_path+ '/' + exp_name + '/code', exception)
-
-
-    return log_file
-
 def logger_txt(log_file,epoch,scores):
 
     mae, mse, nae, loss = scores
@@ -117,8 +89,6 @@ def logger_txt(log_file,epoch,scores):
         f.write(snapshot_name + '\n')
         f.write('    [mae %.2f mse %.2f nae %.4f], [val loss %.4f]\n' % (mae, mse, nae, loss))
         f.write('='*15 + '+'*15 + '='*15 + '\n\n')    
-
-
 
 
 
@@ -151,22 +121,6 @@ def vis_results(exp_name, epoch, writer, restore, img, pred_map, gt_map):
     x = (x.numpy()*255).astype(np.uint8)
 
     writer.add_image(exp_name + '_epoch_' + str(epoch+1), x)
-
-
-
-def print_summary(exp_name,scores,train_record):
-    mae, mse, nae, loss = scores
-    print( '='*50 )
-    print( exp_name )
-    print( '    '+ '-'*20 )
-    print( '    [mae %.2f mse %.2f nae %.4f], [val loss %.4f]' % (mae, mse, nae, loss) )        
-    print( '    '+ '-'*20 )
-    print( '[best] [model: %s] , [mae %.2f], [mse %.2f], [nae %.2f]' % (train_record['best_model_name'],\
-                                                        train_record['best_mae'],\
-                                                        train_record['best_mse'],\
-                                                        train_record['best_nae']) )
-    print( '='*50)
-
 
 
 def print_NWPU_summary(exp_name,log_txt,epoch, scores,train_record,c_maes,c_mses,c_naes):
@@ -205,39 +159,6 @@ def print_NWPU_summary(exp_name,log_txt,epoch, scores,train_record,c_maes,c_mses
                                                         train_record['best_nae']) )
     print( '='*50 )  
 
-
-def print_GCC_summary(exp_name,log_txt,epoch, scores,train_record,c_maes,c_mses):
-    mae, mse, loss = scores
-    c_mses['level'] = np.sqrt(c_mses['level'].avg)
-    c_mses['time'] = np.sqrt(c_mses['time'].avg)
-    c_mses['weather'] = np.sqrt(c_mses['weather'].avg)
-    with open(log_txt, 'a') as f:
-        f.write('='*15 + '+'*15 + '='*15 + '\n')
-        f.write(str(epoch) + '\n\n')
-        f.write('  [mae %.4f mse %.4f], [val loss %.4f]\n\n' % (mae, mse, loss))
-        f.write('  [level: mae %.4f mse %.4f]\n' % (np.average(c_maes['level'].avg), np.average(c_mses['level'])))
-        f.write('    list: ' + str(np.transpose(c_maes['level'].avg)) + '\n')
-        f.write('    list: ' + str(np.transpose(c_mses['level'])) + '\n\n')
-
-        f.write('  [time: mae %.4f mse %.4f]\n' % (np.average(c_maes['time'].avg), np.average(c_mses['time'])))
-        f.write('    list: ' + str(np.transpose(c_maes['time'].avg)) + '\n')
-        f.write('    list: ' + str(np.transpose(c_mses['time'])) + '\n\n')
-
-        f.write('  [weather: mae %.4f mse %.4f]\n' % (np.average(c_maes['weather'].avg), np.average(c_mses['weather'])))
-        f.write('    list: ' + str(np.transpose(c_maes['weather'].avg)) + '\n')
-        f.write('    list: ' + str(np.transpose(c_mses['weather']))+ '\n\n')
-
-        f.write('='*15 + '+'*15 + '='*15 + '\n\n')
-
-    print( '='*50 )
-    print( exp_name )
-    print( '    '+ '-'*20 )
-    print( '    [mae %.2f mse %.2f], [val loss %.4f]' % (mae, mse, loss) )
-    print( '    '+ '-'*20 )
-    print( '[best] [model: %s] , [mae %.2f], [mse %.2f]' % (train_record['best_model_name'],\
-                                                        train_record['best_mae'],\
-                                                        train_record['best_mse']) )
-    print( '='*50 )   
 
 
 def update_model(net,optimizer,scheduler,epoch,i_tb,exp_path,exp_name,scores,train_record,log_file=None):

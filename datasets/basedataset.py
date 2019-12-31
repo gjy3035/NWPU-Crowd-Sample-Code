@@ -7,8 +7,6 @@ from PIL import Image
 import numpy as np
 import torch
 
-import pdb
-
 
 class NWPUDataset(data.Dataset):
     def __init__(self, data_path, datasetname, mode, **argv):
@@ -32,7 +30,6 @@ class NWPUDataset(data.Dataset):
         self.matfileTemp = os.path.join(data_path, 'mat', '{}.mat')
         self.dotfileTemp = os.path.join(data_path, 'dot', '{}.png')
         # self.gen_dot()
-        # pdb.set_trace()
 
         self.num_samples = len(self.file_name)
         self.main_transform = None
@@ -76,8 +73,6 @@ class NWPUDataset(data.Dataset):
 
 
     def read_image_and_gt(self,index):
-
-        # pdb.set_trace()
 
         img_path = self.imgfileTemp.format(self.file_name[index])
         dot_path = self.dotfileTemp.format(self.file_name[index])
