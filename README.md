@@ -6,7 +6,11 @@
 
 This repo is the ofiicial implementation of [paper](). It is developed based on [C^3 Framework](). 
 
-Compared with the original C^3 Framework, the python3.x's new features are utilized, and the density map is generated online by a conv layer for saving io time on the disk. These features will be mergerd to C^3 Framework as soon as possible.
+Compared with the original C^3 Framework, 
+- the python3.x's new features are utilized;
+- the density map is generated online by a conv layer for saving io time on the disk, 
+
+These features will be mergerd to C^3 Framework as soon as possible.
 
 
 # Getting Started
@@ -22,6 +26,7 @@ Compared with the original C^3 Framework, the python3.x's new features are utili
     ```
     git clone https://github.com/gjy3035/NWPU-Crowd-Sample-Code.git
     ```
+    
 - Data Preparation
   - In ```./datasets/XXX/readme.md```, download our processed dataset or run the ```prepare_XXX.m/.py``` to generate the desity maps. If you want to directly download all processeed data (including Shanghai Tech, UCF-QNRF, UCF_CC_50 and WorldExpo'10), please visit the [**link**](https://mailnwpueducn-my.sharepoint.com/:f:/g/personal/gjy3035_mail_nwpu_edu_cn/EkxvOVJBVuxPsu75YfYhv9UBKRFNP7WgLdxXFMSeHGhXjQ?e=IdyAzA).
   - Place the processed data to ```../ProcessedData```.
@@ -55,7 +60,7 @@ The overall results on val set:
 | SFCN+      |  95.46| 608.32| **30.591** | **0.952**|
 
 
- About the leaderboard on the test set, please visit [Crowd benchmark](https://www.crowdbenchmark.com/crowdresult.html).  
+About the leaderboard on the test set, please visit [Crowd benchmark](https://www.crowdbenchmark.com/crowdresult.html).  
 
 
 

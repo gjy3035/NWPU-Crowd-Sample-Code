@@ -25,7 +25,7 @@ class NWPUDataset(data.Dataset):
         for line in lines:
             splited = line.strip().split()
             self.file_name.append(splited[0])
-            self.info.append(splited[1:3]) # crowd level, illum
+            self.info.append(splited[1:3]) # lum, crowd level
 
 
         self.imgfileTemp = os.path.join(data_path, 'img', '{}.jpg')
