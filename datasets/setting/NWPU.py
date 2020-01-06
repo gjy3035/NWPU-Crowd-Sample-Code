@@ -15,7 +15,7 @@ __C_NWPU.LABEL_FACTOR = 1
 __C_NWPU.LOG_PARA = 100.
 
 __C_NWPU.RESUME_MODEL = ''#model path
-__C_NWPU.TRAIN_BATCH_SIZE = 1 #imgs
+__C_NWPU.TRAIN_BATCH_SIZE = 12 #imgs
 
 __C_NWPU.VAL_BATCH_SIZE = 1 # must be 1
 

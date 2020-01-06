@@ -12,7 +12,7 @@ __C.SEED = 3035 # random seed,  for reproduction
 __C.DATASET = 'NWPU' # dataset selection: GCC, SHHA, SHHB, UCF50, QNRF, WE, Mall, UCSD
 
 
-__C.NET = 'Res101_SFCN' # net selection: MCNN, AlexNet, VGG, VGG_DECODER, Res50, CSRNet, SANet
+__C.NET = 'MCNN' # net selection: MCNN, AlexNet, VGG, VGG_DECODER, Res50, CSRNet, SANet
 
 __C.PRE_GCC = False # use the pretrained model on GCC dataset
 __C.PRE_GCC_MODEL = 'path to model' # path to model
@@ -20,14 +20,14 @@ __C.PRE_GCC_MODEL = 'path to model' # path to model
 __C.RESUME = False # contine training
 __C.RESUME_PATH = './exp/11-29_20-55_NWPU_MCNN_0.0001/latest_state.pth' # 
 
-__C.GPU_ID = [0,1,2,3] # sigle gpu: [0], [1] ...; multi gpus: [0,1]
+__C.GPU_ID = [0] # sigle gpu: [0], [1] ...; multi gpus: [0,1]
 
 # learning rate settings
-__C.LR = 1e-5 # learning rate
-__C.LR_DECAY = 0.995 # decay rate
+__C.LR = 1e-4 # learning rate
+__C.LR_DECAY = 1 # decay rate
 __C.LR_DECAY_START = -1 # when training epoch is more than it, the learning rate will be begin to decay
 __C.NUM_EPOCH_LR_DECAY = 1 # decay frequency
-__C.MAX_EPOCH = 500
+__C.MAX_EPOCH = 2000
 
 
 # print 

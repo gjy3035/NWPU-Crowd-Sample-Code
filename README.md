@@ -6,7 +6,8 @@ This repo is the official implementation of [paper](). It is developed based on 
 
 Compared with the original C^3 Framework, 
 - the python3.x's new features are utilized;
-- the density map is generated online by a conv layer for saving io time on the disk, 
+- the density map is generated online by a conv layer for saving io time on the disk;
+- improve the visualization in the Tensorboard.
 
 These features will be merged into C^3 Framework as soon as possible.
 
