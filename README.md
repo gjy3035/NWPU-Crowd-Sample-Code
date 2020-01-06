@@ -1,7 +1,5 @@
 # NWPU-Crowd Sample Code
 
-
-
 ---
 
 This repo is the ofiicial implementation of [paper](). It is developed based on [C^3 Framework](). 
@@ -28,23 +26,28 @@ These features will be mergerd to C^3 Framework as soon as possible.
     ```
     
 - Data Preparation
-  - In ```./datasets/XXX/readme.md```, download our processed dataset or run the ```prepare_XXX.m/.py``` to generate the desity maps. If you want to directly download all processeed data (including Shanghai Tech, UCF-QNRF, UCF_CC_50 and WorldExpo'10), please visit the [**link**](https://mailnwpueducn-my.sharepoint.com/:f:/g/personal/gjy3035_mail_nwpu_edu_cn/EkxvOVJBVuxPsu75YfYhv9UBKRFNP7WgLdxXFMSeHGhXjQ?e=IdyAzA).
-  - Place the processed data to ```../ProcessedData```.
-
-- Pretrained Model
-  - Some Counting Networks (such as VGG, CSRNet and so on) adopt the pre-trained models on ImageNet. You can download them from [TorchVision](https://github.com/pytorch/vision/tree/master/torchvision/models)
-  - Place the processed model to ```~/.cache/torch/checkpoints/``` (only for linux OS). 
+  - Download NWPU-Crowd dataset from this [link](https://mailnwpueducn-my.sharepoint.com/personal/gjy3035_mail_nwpu_edu_cn/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fgjy3035%5Fmail%5Fnwpu%5Fedu%5Fcn%2FDocuments%2F%E8%AE%BA%E6%96%87%E5%BC%80%E6%BA%90%E6%95%B0%E6%8D%AE%2FNWPU%2DCrowd&originalPath=aHR0cHM6Ly9tYWlsbndwdWVkdWNuLW15LnNoYXJlcG9pbnQuY29tLzpmOi9nL3BlcnNvbmFsL2dqeTMwMzVfbWFpbF9ud3B1X2VkdV9jbi9Fc3ViTXA0OHd3SkRpSDBZbFQ4Mk5ZWUJtWTlMMHMtRnByckJjb2FBSmtJMXJ3P3J0aW1lPWdxTkxjV0dTMTBn)
+  - Run ```./datasets/prepare_NWPU.m``` using [Matlab](https://www.mathworks.com/).
+  - Modify '__C_NWPU.DATA_PATH' in ```./datasets/setting/NWPU.py``` with the path of your processed data.
 
 
 ### Training
 
-- set the parameters in ```config.py``` and ```./datasets/XXX/setting.py``` (if you want to reproduce our results, you are recommonded to use our parameters in ```./results_reports```).
+- Set the parameters in ```config.py``` and ```./datasets/setting/NWPU.py``` (if you want to reproduce our results, you are recommonded to use our parameters in ```./saved_exp_para```).
 - run ```python train.py```.
 - run ```tensorboard --logdir=exp --port=6006```.
 
 ### Testing
 
-We only provide an example to test the model on the test set. You may need to modify it to test your own models.
+We only provide an example to forward the model on the test set. You may need to modify it to test your own models.
+
+- Modify some key parameters in ```test.py```: 
+ - 
+ - Line 32: ```LOG_PARA```, the same as ```./datasets/setting/NWPU.py```.
+ - Line 34: ```dataRoot```, the same as ```./datasets/setting/NWPU.py```.
+ - Line 36: ```model_path```.  
+ - Line 48: GPU Id and Model Name. 
+- python test.py
 
 # Performance on the validation set
 
@@ -60,7 +63,7 @@ The overall results on val set:
 | SFCN+      |  95.46| 608.32| **30.591** | **0.952**|
 
 
-About the leaderboard on the test set, please visit [Crowd benchmark](https://www.crowdbenchmark.com/crowdresult.html).  
+About the leaderboard on the test set, please visit [Crowd benchmark](https://crowdbenchmark.com/nwpucrowd.html).  
 
 
 

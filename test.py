@@ -28,6 +28,7 @@ restore = standard_transforms.Compose([
         standard_transforms.ToPILImage()
     ])
 pil_to_tensor = standard_transforms.ToTensor()
+
 LOG_PARA = 100.0
 
 dataRoot = '../ProcessedData/NWPU/XXX/'
@@ -44,7 +45,7 @@ def main():
 
 def test(file_list, model_path):
 
-    net = CrowdCounter(cfg.GPU_ID,'VGG')
+    net = CrowdCounter(cfg.GPU_ID,'VGG') # gpus, model name
     net.load_state_dict(torch.load(model_path))
     net.cuda()
     net.eval()
