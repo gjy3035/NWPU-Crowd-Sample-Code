@@ -42,11 +42,10 @@ These features will be mergerd to C^3 Framework as soon as possible.
 We only provide an example to forward the model on the test set. You may need to modify it to test your own models.
 
 - Modify some key parameters in ```test.py```: 
- - 
- - Line 32: ```LOG_PARA```, the same as ```./datasets/setting/NWPU.py```.
- - Line 34: ```dataRoot```, the same as ```./datasets/setting/NWPU.py```.
- - Line 36: ```model_path```.  
- - Line 48: GPU Id and Model Name. 
+  - Line 32: ```LOG_PARA```, the same as ```./datasets/setting/NWPU.py```.
+  - Line 34: ```dataRoot```, the same as ```./datasets/setting/NWPU.py```.
+  - Line 36: ```model_path```.  
+  - Line 48: GPU Id and Model Name. 
 - python test.py
 
 # Performance on the validation set
@@ -55,20 +54,27 @@ The overall results on val set:
 
 |   Method   |  MAE  |  MSE  |  PSNR  |  SSIM  | 
 |------------|-------|-------|--------|--------|
-| MCNN       | 218.53| 700.61| 28.558 |  0.875 |
-| C3F-VGG    | 105.79| 504.39| 29.977 |  0.918 |
-| CSRNet     | 104.89| 433.48| 29.901 |  0.883 |
-| CANNet     |  93.58| 489.90| 30.428 |  0.870 |
-| SCAR       |  **81.57**| **397.92**| 30.356 |  0.920 |
-| SFCN+      |  95.46| 608.32| **30.591** | **0.952**|
+| MCNN [1]   | 218.53| 700.61| 28.558 |  0.875 |
+| C3F-VGG [2]| 105.79| 504.39| 29.977 |  0.918 |
+| CSRNet [3] | 104.89| 433.48| 29.901 |  0.883 |
+| CANNet [4] |  93.58| 489.90| 30.428 |  0.870 |
+| SCAR [5]   |  **81.57**| **397.92**| 30.356 |  0.920 |
+| SFCN+ [6]  |  95.46| 608.32| **30.591** | **0.952**|
 
 
 About the leaderboard on the test set, please visit [Crowd benchmark](https://crowdbenchmark.com/nwpucrowd.html).  
 
+## References
+
+[1] Single-Image Crowd Counting via Multi-Column Convolutional Neural Network, CPVR, 2016.
+[2] C^3 Framework: An Open-source PyTorch Code for Crowd Counting, arXiv, 2019.
+[3] CSRNet: Dilated Convolutional Neural Networks for Understanding the Highly Congested Scenes, CVPR, 2018. 
+[4] Context-Aware Crowd Counting, CVPR, 2019.
+[5] SCAR: Spatial-/Channel-wise Attention Regression Networks for Crowd Counting, Neurocomputing, 2019.
+[6] Learning from Synthetic Data for Crowd Counting in the Wild, CVPR, 2019.
 
 
-
-## Citation
+# Citation
 If you find this project is useful for your research, please cite:
 ```
 
@@ -83,4 +89,6 @@ Our code borrows a lot from the C^3 Framework, you may cite it:
   year={2019}
 }
 ```
-If you use a specific crowd couning models, please cite it. 
+If you use crowd couning models in this repo (MCNN, C3F-VGG, CSRNet, CANNet, SCAR, and SFCN+), please cite them. 
+
+
