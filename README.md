@@ -89,12 +89,12 @@ About the leaderboard on the test set, please visit [Crowd benchmark](https://cr
 
 ## References
 
-[1] Single-Image Crowd Counting via Multi-Column Convolutional Neural Network, CPVR, 2016.
-[2] C^3 Framework: An Open-source PyTorch Code for Crowd Counting, arXiv, 2019.
-[3] CSRNet: Dilated Convolutional Neural Networks for Understanding the Highly Congested Scenes, CVPR, 2018. 
-[4] Context-Aware Crowd Counting, CVPR, 2019.
-[5] SCAR: Spatial-/Channel-wise Attention Regression Networks for Crowd Counting, Neurocomputing, 2019.
-[6] Learning from Synthetic Data for Crowd Counting in the Wild, CVPR, 2019.
+1. Single-Image Crowd Counting via Multi-Column Convolutional Neural Network, CPVR, 2016.
+2. C^3 Framework: An Open-source PyTorch Code for Crowd Counting, arXiv, 2019.
+3. CSRNet: Dilated Convolutional Neural Networks for Understanding the Highly Congested Scenes, CVPR, 2018. 
+4. Context-Aware Crowd Counting, CVPR, 2019.
+5. SCAR: Spatial-/Channel-wise Attention Regression Networks for Crowd Counting, Neurocomputing, 2019.
+6. Learning from Synthetic Data for Crowd Counting in the Wild, CVPR, 2019.
 
 
 # Evaluation Scheme 
