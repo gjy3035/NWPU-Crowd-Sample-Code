@@ -74,6 +74,10 @@ About the leaderboard on the test set, please visit [Crowd benchmark](https://cr
 [6] Learning from Synthetic Data for Crowd Counting in the Wild, CVPR, 2019.
 
 
+# Evaluation Scheme 
+
+The Evaluation Python Code of the ```crowdbenchmark.com``` is shown in ```./misc/evaluation_code.py```, which is similar to our validation code in ```trainer.py```. 
+
 # Citation
 If you find this project is useful for your research, please cite:
 ```
