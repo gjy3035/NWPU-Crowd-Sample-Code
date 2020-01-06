@@ -1,15 +1,7 @@
 import argparse
-import torchvision.datasets as dset
-
-
-
-import pdb
 from PIL import Image
 import numpy as np
 import os
-
-
-# TODO 
 
 def make_parser():
     parser = argparse.ArgumentParser()

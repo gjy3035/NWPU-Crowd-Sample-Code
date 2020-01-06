@@ -72,7 +72,6 @@ def logger(exp_path, exp_name, work_dir, exception, resume=False):
     if not resume:
         copy_cur_env(work_dir, exp_path+ '/' + exp_name + '/code', exception)
 
-
     return writer, log_file
 
 
@@ -82,14 +81,11 @@ def logger_txt(log_file,epoch,scores):
 
     snapshot_name = 'all_ep_%d_mae_%.1f_mse_%.1f' % (epoch + 1, mae, mse)
 
-    # pdb.set_trace()
-
     with open(log_file, 'a') as f:
         f.write('='*15 + '+'*15 + '='*15 + '\n\n')
         f.write(snapshot_name + '\n')
         f.write('    [mae %.2f mse %.2f nae %.4f], [val loss %.4f]\n' % (mae, mse, nae, loss))
         f.write('='*15 + '+'*15 + '='*15 + '\n\n')    
-
 
 
 def vis_results(exp_name, epoch, writer, restore, img, pred_map, gt_map):
@@ -101,20 +97,14 @@ def vis_results(exp_name, epoch, writer, restore, img, pred_map, gt_map):
     for idx, tensor in enumerate(zip(img.cpu().data, pred_map, gt_map)):
         if idx>1:# show only one group
             break
-        # pdb.set_trace()
+
         pil_input = restore(tensor[0])
         
-
         pred_color_map = cv2.applyColorMap((255*tensor[1]/(tensor[2].max()+1e-10)).astype(np.uint8).squeeze(), cv2.COLORMAP_JET)
         gt_color_map = cv2.applyColorMap((255*tensor[2]/(tensor[2].max()+1e-10)).astype(np.uint8).squeeze(), cv2.COLORMAP_JET)
-        
-
         pil_label = Image.fromarray(cv2.cvtColor(gt_color_map,cv2.COLOR_BGR2RGB))
-
         pil_output = Image.fromarray(cv2.cvtColor(pred_color_map,cv2.COLOR_BGR2RGB))
         x.extend([pil_to_tensor(pil_input.convert('RGB')), pil_to_tensor(pil_label.convert('RGB')), pil_to_tensor(pil_output.convert('RGB'))])
-
-        # pdb.set_trace()
 
     x = torch.stack(x, 0)
     x = vutils.make_grid(x, nrow=3, padding=5)
@@ -127,8 +117,6 @@ def print_NWPU_summary(exp_name,log_txt,epoch, scores,train_record,c_maes,c_mses
     mae, mse, nae, loss = scores
     c_mses['level'] = np.sqrt(c_mses['level'].avg)
     c_mses['illum'] = np.sqrt(c_mses['illum'].avg)
-
-    # pdb.set_trace()
 
     with open(log_txt, 'a') as f:
         f.write('='*15 + '+'*15 + '='*15 + '\n')
@@ -158,7 +146,6 @@ def print_NWPU_summary(exp_name,log_txt,epoch, scores,train_record,c_maes,c_mses
                                                         train_record['best_mse'],\
                                                         train_record['best_nae']) )
     print( '='*50 )  
-
 
 
 def update_model(net,optimizer,scheduler,epoch,i_tb,exp_path,exp_name,scores,train_record,log_file=None):
@@ -200,13 +187,10 @@ def copy_cur_env(work_dir, dst_dir, exception):
         file = os.path.join(work_dir,filename)
         dst_file = os.path.join(dst_dir,filename)
 
-
         if os.path.isdir(file) and exception not in filename:
             shutil.copytree(file, dst_file)
         elif os.path.isfile(file):
             shutil.copyfile(file,dst_file)
-
-
 
 
 class AverageMeter(object):
@@ -270,11 +254,3 @@ class Timer(object):
             return self.average_time
         else:
             return self.diff
-
-
-
-
-
-
-
-
