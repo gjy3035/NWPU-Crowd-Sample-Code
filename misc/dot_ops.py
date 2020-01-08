@@ -7,7 +7,7 @@ from torch.autograd import Variable
 import math
 
 class Gaussian(nn.Module):
-    def __init__(self, in_channels, sigmalist, kernel_size=64, stride=1, padding=0):
+    def __init__(self, in_channels, sigmalist, kernel_size=64, stride=1, padding=0, froze=True):
         super(Gaussian, self).__init__()
         out_channels = len(sigmalist) * in_channels
         # gaussian kernel
@@ -29,11 +29,17 @@ class Gaussian(nn.Module):
         self.gkernel = nn.Conv2d(in_channels, out_channels, kernel_size, stride=stride, padding=padding, groups=in_channels, bias=False)
         self.gkernel.weight = torch.nn.Parameter(weight)
 
+        if froze: self.frozePara()
 
     def forward(self, dotmaps):
         gaussianmaps = self.gkernel(dotmaps)
         return gaussianmaps
- 
+    
+    def frozePara(self):
+        for para in self.parameters():
+            para.requires_grad = False
+
+
 class SumPool2d(nn.Module):
     def __init__(self, kernel_size):
         super(SumPool2d, self).__init__()

@@ -5,16 +5,11 @@ from .dot_ops import Gaussian, SumPool2d
 
 
 class Gaussianlayer(nn.Module):
-    def __init__(self, sigma=[4], kernel_size=15):
+    def __init__(self, sigma=None, kernel_size=15):
         super(Gaussianlayer, self).__init__()
         if sigma == None:
             sigma = [4]
-        self.gaussian = Gaussian(1, sigma, kernel_size=kernel_size, padding=kernel_size//2)
-
-
-        self.staticPart = [self.gaussian]
-        for part in self.staticPart:
-            part.require_grad = False
+        self.gaussian = Gaussian(1, sigma, kernel_size=kernel_size, padding=kernel_size//2, froze=True)
     
     def forward(self, dotmaps):
         denmaps = self.gaussian(dotmaps)
