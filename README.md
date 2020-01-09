@@ -49,7 +49,7 @@ These features will be merged into C^3 Framework as soon as possible.
         |-- train.txt
         |-- val.txt
         |-- test.txt
-        `-- readme.md
+        |-- readme.md
     ```
   - Run ```./datasets/prepare_NWPU.m``` using [Matlab](https://www.mathworks.com/). 
   - Modify ```__C_NWPU.DATA_PATH``` in ```./datasets/setting/NWPU.py``` with the path of your processed data.
@@ -105,6 +105,7 @@ The Evaluation Python Code of the ```crowdbenchmark.com``` is shown in ```./misc
 # Citation
 If you find this project is useful for your research, please cite:
 ```
+Coming soon.
 
 ```
 
