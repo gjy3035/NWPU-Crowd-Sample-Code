@@ -2,7 +2,7 @@
 
 ---
 
-This repo is the official implementation of [paper](). It is developed based on [C^3 Framework](). 
+This repo is the official implementation of [paper]() (coming soon). It is developed based on [C^3 Framework](). 
 
 Compared with the original C^3 Framework, 
 - the python3.x's new features are utilized;
