@@ -2,7 +2,7 @@
 
 ---
 
-This repo is the official implementation of [paper](https://arxiv.org/abs/2001.03360) (NWPU-Crowd: A Large-Scale Benchmark for Crowd Counting). It is developed based on [C^3 Framework](https://github.com/gjy3035/C-3-Framework). 
+This repo is the official implementation of [paper](https://arxiv.org/abs/2001.03360): **NWPU-Crowd: A Large-Scale Benchmark for Crowd Counting**. The code is developed based on [C^3 Framework](https://github.com/gjy3035/C-3-Framework). 
 
 Compared with the original C^3 Framework, 
 - the python3.x's new features are utilized;
