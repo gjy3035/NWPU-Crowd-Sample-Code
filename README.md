@@ -40,12 +40,12 @@ These features will be merged into C^3 Framework as soon as possible.
         |   |-- 0001.json
         |   |-- 0002.json
         |   |-- ...
-        |   |-- 5109.json
+        |   |-- 3609.json
         |-- mats
         |   |-- 0001.mat
         |   |-- 0002.mat
         |   |-- ...
-        |   |-- 5109.mat
+        |   |-- 3609.mat
         |-- train.txt
         |-- val.txt
         |-- test.txt
