@@ -14,9 +14,6 @@ from config import cfg
 from misc.utils import *
 import scipy.io as sio
 from PIL import Image, ImageOps
-import sys
-
-#import quailitycc
 
 torch.cuda.set_device(0)
 torch.backends.cudnn.benchmark = True
@@ -33,32 +30,36 @@ restore = standard_transforms.Compose([
 pil_to_tensor = standard_transforms.ToTensor()
 LOG_PARA = 100.0
 
+dataRoot = '../ProcessedData/Data.2019.11/NWPU/1204_min_576x768_mod16_2048'
 
-dataRoot = '/media/E/own_open_source/ProcessedData/Data.2019.11/NWPU/1204_min_576x768_mod16_2048'
-model_path = '/media/E/linwei/CC/NEWC3F/exp/12-27_13-59_NWPU_VGG_1e-05_[01]/all_ep_16_mae_16.8_mse_27.8_nae_0.395.pth'
-
+#model_path = 'exp/12-06_15-03_NWPU_Res101_SFCN_1e-05/latest_state.pth'
+model_path = 'exp/12-06_15-03_NWPU_Res101_SFCN_1e-05/all_ep_321_mae_90.7_mse_487.2_nae_0.375.pth'
 
 def main():
+
     txtpath = os.path.join(dataRoot, 'txt_list', 'test.txt')
     with open(txtpath) as f:
         lines = f.readlines()                            
+
     test(lines, model_path)
    
 
 def test(file_list, model_path):
 
-    net = CrowdCounter(cfg.GPU_ID, 'VGG')
+    net = CrowdCounter(cfg.GPU_ID, 'Res101_SFCN')
     net.cuda()
+    #lastest_state = torch.load(model_path)
+    #net.load_state_dict(lastest_state['net'])
     net.load_state_dict(torch.load(model_path))
     net.eval()
 
     gts = []
     preds = []
-    f = open(f'submmited.txt', 'w+')
 
+    record = open('submmited.txt', 'w+')
     for infos in file_list:
-        filename, illum, level = infos.split()
-        
+        filename = infos.split()[0]
+
         imgname = os.path.join(dataRoot, 'img', filename + '.jpg')
         img = Image.open(imgname)
         if img.mode == 'L':
@@ -101,13 +102,15 @@ def test(file_list, model_path):
             # for the overlapping area, compute average value
             mask = crop_masks.sum(dim=0).unsqueeze(0)
             pred_map = pred_map / mask
+
         pred_map = pred_map.cpu().data.numpy()[0,0,:,:]
+
 
         pred = np.sum(pred_map) / LOG_PARA
 
-        print(f'{filename} {pred:.4f}', file=f)
+        print(f'{filename} {pred:.4f}', file=record)
         print(f'{filename} {pred:.4f}')
-    f.close()
-            
+    record.close()
+
 if __name__ == '__main__':
     main()
