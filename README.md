@@ -70,7 +70,11 @@ We only provide an example to forward the model on the test set. You may need to
   - Line 34: ```dataRoot```, the same as ```__C_NWPU.DATA_PATH``` in ```./datasets/setting/NWPU.py```.
   - Line 36: ```model_path```.  
   - Line 48: GPU Id and Model Name. 
-- Run ```python test.py```.
+- Run ```python test.py```. 
+
+## Pre-trained Models
+
+We provide the pre-trained models in this [link](http://share.crowdbenchmark.com:2443/home/Pre-trained_Models_NWPU-Crowd), which is a temporal share point of OneDrive. We will provide a permanent website ASAP. 
 
 # Performance on the validation set
 
