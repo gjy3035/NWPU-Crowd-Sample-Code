@@ -74,7 +74,7 @@ We only provide an example to forward the model on the test set. You may need to
 
 ## Pre-trained Models
 
-We provide the pre-trained models in this [link](http://share.crowdbenchmark.com:2443/home/Pre-trained_Models_NWPU-Crowd), which is a temporal share point of OneDrive. We will provide a permanent website ASAP. 
+We provide the pre-trained models in this [link](http://share.crowdbenchmark.com:2443/home/Pre-trained_Models_NWPU-Crowd), which is a temporary share point of OneDrive. We will provide a permanent website ASAP. 
 
 # Performance on the validation set
 
