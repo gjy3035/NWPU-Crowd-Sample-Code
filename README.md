@@ -87,7 +87,7 @@ The overall results on val set:
 | CSRNet [3] | 104.89| 433.48| 29.901 |  0.883 |
 | CANNet [4] |  93.58| 489.90| 30.428 |  0.870 |
 | SCAR [5]   |  **81.57**| **397.92**| 30.356 |  0.920 |
-| SFCN+ [6]  |  95.46| 608.32| **30.591** | **0.952**|
+| SFCN+ [6]  |  90.65| 487.17| **30.518** | **0.933**|
 
 
 About the leaderboard on the test set, please visit [Crowd benchmark](https://crowdbenchmark.com/nwpucrowd.html).  
