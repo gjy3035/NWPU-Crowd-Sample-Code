@@ -78,7 +78,7 @@ We provide the pre-trained models in this [link](http://share.crowdbenchmark.com
 
 # Performance on the validation set
 
-The overall results on val set:
+For an intuitive comparison, the visualization results of these methods are provided at this [link](http://share.crowdbenchmark.com:2443/home/predicted_density_map_on_NWPU-Crowd_val). The overall results on val set:
 
 |   Method   |  MAE  |  MSE  |  PSNR  |  SSIM  | 
 |------------|-------|-------|--------|--------|
@@ -88,7 +88,6 @@ The overall results on val set:
 | CANNet [4] |  93.58| 489.90| 30.428 |  0.870 |
 | SCAR [5]   |  **81.57**| **397.92**| 30.356 |  0.920 |
 | SFCN+ [6]  |  90.65| 487.17| **30.518** | **0.933**|
-
 
 About the leaderboard on the test set, please visit [Crowd benchmark](https://crowdbenchmark.com/nwpucrowd.html).  
 
