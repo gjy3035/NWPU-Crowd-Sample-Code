@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Modern Business - Start Bootstrap Template</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="css/modern-business.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">NWPU-Crowd Dataset</a>
+    </div>
+  </nav> 
+
+  <header>
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+      <ol class="carousel-indicators">
+        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+      </ol>
+      <div class="carousel-inner" role="listbox">
+        <!-- Slide One - Set the background image for this slide in the line below -->
+        <div class="carousel-item active" style="background-image: url('img/1.jpg')">
+          <div class="carousel-caption d-none d-md-block">
+            <h1>Crowd Scene 1</h1>
+          </div>
+        </div>
+        <!-- Slide Two - Set the background image for this slide in the line below -->
+        <div class="carousel-item" style="background-image: url('img/2.jpg')">
+          <div class="carousel-caption d-none d-md-block">
+            <h1>Crowd Scene 2</h1>
+          </div>
+        </div>
+        <!-- Slide Three - Set the background image for this slide in the line below -->
+        <div class="carousel-item" style="background-image: url('img/3.jpg')">
+          <div class="carousel-caption d-none d-md-block">
+            <h1>Crowd Scene 3</h1>
+          </div>
+        </div>
+      </div>
+      <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+  </header>
+
+
+<div class="container">
+
+  <h1 class="my-4">NWPU-Crowd: A Large-Scale Benchmark for Crowd Counting and Localization</h1>
+  <hr>
+  <!-- Features Section -->
+  <div class="row">
+    <div class="col-lg-6">
+      <h2>Overview</h2>
+      <p> NWPU consists of 5,109 images and contains 2,133,375 annotated instances with point and box lables. Compareing with the previous datasets, the main advantages are:</p>
+      <ul>
+        <li> Negative Samples </li>
+        <li> Fair Evaluation</li>
+        <li> High Resolution</li>
+        <li> Large Appearance Variation</li>
+      </div>
+    <div class="col-lg-6">
+      <img class="img-fluid rounded" src="img/table.png" alt="">
+    </div>
+  </div>
+
+  <hr>
+  <!-- Features Section -->
+  <div class="row">
+    <div class="col-lg-6">
+      <h2>Evaluation Protocol</h2>
+      <p> Crowd <strong>Counting</strong>:</p>
+      <ul>
+        <li> MAE (Overall MAE is primary key.)</li>
+        <li> MSE </li>
+        <li> NAE </li>
+      </ul>
+      <p> Crowd <strong>Localization</strong>:</p>
+      <ul>
+        <li> Precision </li>
+        <li> Recall </li>
+        <li> F1-Measure (Overall F1-Measure is primary key.)</li>
+        </ul>
+      </div>
+  </div>
+
+  <hr>
+  <!-- Features Section -->
+  <div class="row">
+    <div class="col-lg-6">
+      <h2>Leaderboard</h2>
+      <p> Crowd <strong>Counting</strong>: <a href='https://www.crowdbenchmark.com/nwpucrowd.html'>Link to CorwdBenchmark</a></p>
+      <p> Crowd <strong>Localization</strong>: <a href='https://www.crowdbenchmark.com/nwpucrowdloc.html'>Link to CorwdBenchmark</a> (Coming soon...) </p>
+      </div>
+      <div class="col-lg-6" style="padding-top:50px;padding-bottom:50px;text-align:center">
+        <img class="img-fluid rounded"   src="img/cb.png" alt="">
+      </div>
+  </div>
+  <hr>
+  <!-- Features Section -->
+  <div class="row">
+    <div class="col-lg-10" style="width:100%">
+      <h2>Download</h2>
+      <ul>
+      <li> Paper:</li>
+        <ul>
+          <li>[<a href='https://arxiv.org/abs/2004.03597'>Version <strong>1</strong></a>] NWPU-Crowd: A Large-Scale Benchmark for Crowd Counting</li>
+          <li>[<a href='#'>Version <strong>2</strong></a>] NWPU-Crowd: A Large-Scale Benchmark for Crowd Counting <strong>and Localization</strong> (Coming soon)</li>
+        </ul> 
+      <li> Dataset: [<a href='https://mailnwpueducn-my.sharepoint.com/:f:/g/personal/gjy3035_mail_nwpu_edu_cn/EsubMp48wwJDiH0YlT82NYYBmY9L0s-FprrBcoaAJkI1rw?e=e2JLgD'>OneDrive</a>] [<a href='https://pan.baidu.com/s/1c2eLEE7leN0jz-fM38zyIQ'>BaiduNetdisk</a>] [<a href='http://share.crowdbenchmark.com:2443/home/NWPU-Crowd_Dataset'>CorwdBenchmark</a>]</li>
+      <li> Open-source Code: [<a href='https://github.com/gjy3035/NWPU-Crowd-Sample-Code'>Counting Code</a>] [<a href='https://github.com/gjy3035/NWPU-Crowd-Sample-Code-for-Localization'>Localization Code</a>]</li>
+      <li> Pre-trained Models [<a href='http://share.crowdbenchmark.com:2443/home/Pre-trained_Models_NWPU-Crowd'>Link</a>]: MCNN, VGG, CSR, CAN, SCAR, SFCN+, etc.</li>  
+      <li>Validation Reults</li>
+      <ul>
+        <li> Visualization Results for Density Prediction: [<a href='http://share.crowdbenchmark.com:2443/home/predicted_density_map_on_NWPU-Crowd_val'>Link</a>]: MCNN, PCC, Reg+Det, VGG, CSR, CAN, SCAR, SFCN+, etc.</li>
+        <li> Results for Localization: [<a href='#'>Link</a>]: Faster RCNN, TinyFaces, VGG+GPR, RAZ_loc.</li>
+      </ul>
+      
+    </ul>
+    </div>
+  </div>
+  <hr>
+  <!-- Features Section -->
+  <div class="row">
+    <div class="col-lg-10" style="width:100%">
+      <h2>Submission</h2>
+      <p>In addition to submit the test results in CorwdBenchmark.com, you also send your validation results (density map or localization results) to <a href='mailto:gjy3035@gmail.com'>us</a>. We will upload it to netdisk and share its download link. </p>
+      
+    </ul>
+    </div>
+  </div>
+  <hr>
+  <!-- Features Section -->
+  <div class="row">
+    <div class="col-lg-10" style="width:100%">
+      <h2>Citation</h2>
+      <p>If you find our project is useful for your research, please cite:  </p>
+      <div style="background:#d0d0d0">@article{gao2020nwpu,<br>
+        title={NWPU-Crowd: A Large-Scale Benchmark for Crowd Counting and Localization},<br>
+        author={Wang, Qi and Gao, Junyu and Lin, Wei and Li, Xuelong},<br>
+        journal={arXiv preprint arXiv:2001.03360},<br>
+        year={2020}<br>
+      }</div>
+      <hr>
+    </div>
+  </div>
+
+</div>
+
+  <!-- Footer -->
+  <footer class="py-5 bg-dark">
+    <div class="container">
+      <p class="m-0 text-center text-white">Copyright &copy; OPTIMAL 2020</p>
+    </div>
+    <!-- /.container -->
+  </footer>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>
