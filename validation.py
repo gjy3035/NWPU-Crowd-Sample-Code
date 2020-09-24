@@ -14,7 +14,7 @@ from config import cfg
 from misc.utils import *
 import scipy.io as sio
 from PIL import Image, ImageOps
-from quailitycc import calc_psnr, calc_ssim
+from qualitycc import calc_psnr, calc_ssim
 torch.cuda.set_device(0)
 torch.backends.cudnn.benchmark = True
 
